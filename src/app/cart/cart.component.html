@@ -1,0 +1,54 @@
+<div class="cart-container">
+  <h2>Shopping Cart</h2>
+
+  <form (ngSubmit)="addNewItem()" class="add-form">
+    <label>
+      Item Name:
+      <input
+        type="text"
+        [(ngModel)]="newItem.name"
+        name="name"
+        placeholder="e.g., Apple"
+        required />
+    </label>
+  
+    <label>
+      Price:
+      <input
+        type="number"
+        [(ngModel)]="newItem.price"
+        name="price"
+        min="1"
+        placeholder="e.g., 1.99"
+        required />
+    </label>
+  
+    <label>
+      Quantity:
+      <input
+        type="number"
+        [(ngModel)]="newItem.quantity"
+        name="quantity"
+        min="1"
+        placeholder="e.g., 2"
+        required />
+    </label>
+  
+    <button type="submit">Add to Cart</button>
+  </form>
+  
+
+  <div class="cart-item" *ngFor="let item of items$ | async">
+    <span>{{ item.name }} - ${{ item.price }} × {{ item.quantity }}</span>
+    <input
+      type="number"
+      [value]="item.quantity"
+      #qtyInput
+      min="1"
+      (input)="updateQuantity(item.id, qtyInput.valueAsNumber)" />
+      <button (click)="removeItem(item.id)">Remove</button>
+  </div>
+
+  <p><strong>Total Items:</strong> {{ count$ | async }}</p>
+  <p><strong>Total Price:</strong> ${{ total$ | async }}</p>
+</div>
