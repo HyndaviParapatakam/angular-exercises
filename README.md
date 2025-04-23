@@ -1,59 +1,93 @@
-# AngularExercises
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.8.
+# Angular Exercises: Change Detection & NgRx Shopping Cart
+- **2.1 Change Detection**
+- **2.2 NgRx Shopping Cart**
 
-## Development server
+---
 
-To start a local development server, run:
+## How to Run This Project
+
+### 1. Clone or Download
+
+```bash
+git clone <your-repo-url>
+cd angular-exercises
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Start the development server
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### 4. Open in browser
 
-## Code scaffolding
+Visit: [http://localhost:4200](http://localhost:4200)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+---
 
-```bash
-ng generate component component-name
-```
+## Application Structure
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### 2.1 Change Detection
 
-```bash
-ng generate --help
-```
+- **Parent Component**
+  - Button to change a name string
+  - Button to add a new item (trigger change detection)
+- **Child Component (OnPush)**
+  - Receives `@Input()` props
+  - Logs `ngOnChanges` and `ngDoCheck`
+  - Uses a pure pipe (`PureUppercasePipe`) for name
+  - Optimized rendering using `trackBy`
 
-## Building
+### 2.2 NgRx Shopping Cart
 
-To build the project run:
+- State managed with **NgRx Store**
+- Actions: `addItem`, `removeItem`, `updateQuantity`
+- Selectors: `selectCartItems`, `selectCartTotal`, `selectCartCount`
+- **Meta-reducer** to sync cart state with `localStorage`
+- Responsive and modern UI with:
+  - Input form (name, price, quantity)
+  - List of items with editable quantity and remove button
+  - Cart summary (total items, total price)
 
-```bash
-ng build
-```
+---
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 📦 Features Covered
 
-## Running unit tests
+| Feature                                 | Implemented |
+|----------------------------------------|-------------|
+| `ChangeDetectionStrategy.OnPush`       | ✅          |
+| Lifecycle hooks (`ngOnChanges`, `ngDoCheck`) | ✅    |
+| Pure pipes and trackBy optimizations   | ✅          |
+| NgRx Store setup and integration       | ✅          |
+| Add/Remove/Update cart actions         | ✅          |
+| Selectors for derived state            | ✅          |
+| `localStorage` sync via meta-reducer   | ✅          |
+| UI Styling and responsiveness          | ✅          |
+| Lazy-loaded cart module with isolated state | ✅    |
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+---
 
-```bash
-ng test
-```
+## Useful Tips
 
-## Running end-to-end tests
+- To test `OnPush`, open browser dev tools and watch console logs while changing inputs.
+- Try refreshing after adding cart items — data persists!
+- You can extend the app with `NgRx Effects` for API calls later.
 
-For end-to-end (e2e) testing, run:
+---
 
-```bash
-ng e2e
-```
+## Screenshots
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Include screenshots inside a `/screenshots` folder if needed.
 
-## Additional Resources
+---
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Credits
+
+Created with by Hyndavi Reddy as part of hands-on frontend architecture and NgRx exploration.
